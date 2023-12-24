@@ -14,21 +14,26 @@ h1 {
     display: grid;
     align-content: center;
     justify-content: center;
-    min-height: 100vh;
     grid-template-columns: repeat(4, 5em);
-    grid-template-rows: repeat(5, 5em);
+    grid-template-rows: minmax(4em, auto) repeat(6, 5em);
 }
 
 .screen {
-    border: 2px solid;
+    border: 0;
     text-align: right;
-    width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .screenBigParragraph, .screenSmallParragraph {
     font-size: 3em;
-    padding: 16px;
+    padding: 5px;
     margin: 0;
     border: 0;
     color: rgb(255,2555,255);
