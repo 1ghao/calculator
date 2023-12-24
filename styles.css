@@ -1,61 +1,70 @@
 body {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: beige;
-    font-size: 1.5em;
+  font-family: "Courier New", Courier, monospace;
+  background-color: beige;
+  font-size: 1.5em;
 }
 
 h1 {
-    text-align: center;
-    margin: 0;
-    padding: 0;
+  text-align: center;
+  margin: 1rem;
+  padding: 1rem;
 }
 
 .calculatorGrid {
-    display: grid;
-    align-content: center;
-    justify-content: center;
-    grid-template-columns: repeat(4, 5em);
-    grid-template-rows: minmax(4em, auto) repeat(6, 5em);
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  grid-template-columns: repeat(4, 5em);
+  grid-template-rows: minmax(5em, auto) repeat(6, 5em);
 }
 
 .screen {
-    border: 0;
-    text-align: right;
-    background-color: rgba(0, 0, 0, 0.8);
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-direction: column;
-    word-wrap: break-word;
-    word-break: break-all;
+  border: 0;
+  text-align: right;
+  background-color: rgba(0, 0, 0, 0.8);
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: column;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
-.screenBigParragraph, .screenSmallParragraph {
-    font-size: 3em;
-    padding: 5px;
-    margin: 0;
-    border: 0;
-    color: rgb(255,2555,255);
+.screenBigParragraph,
+.screenSmallParragraph {
+  font-size: 3em;
+  padding: 5px;
+  margin: 0;
+  border: 0;
+  color: rgb(255, 2555, 255);
 }
 
 .screenSmallParragraph {
-    color: rgb(120, 120, 120);
-    font-size: 1em;
+  color: rgb(120, 120, 120);
+  font-size: 1em;
 }
 
 .calculatorGrid > button {
-    background-color: rgb(180, 220, 250);
-    border: 1px solid;
-    font-size: 1.5em;
-    outline: none;
-
+  background-color: rgb(180, 220, 250);
+  border: 1px solid;
+  font-size: 1.5em;
+  outline: none;
+  cursor: pointer;
 }
 
 .calculatorGrid > button:hover {
-    background-color: rgba(180, 220, 250, 0.6);
+  background-color: rgba(180, 220, 250, 0.6);
 }
 
 .bigButton {
-    grid-column: span 2;
+  grid-column: span 2;
+}
+
+#acButton {
+  background-color: rgb(100, 180, 210);
+}
+
+#acButton:hover {
+  background-color: rgba(100, 180, 210, 0.6);
 }
