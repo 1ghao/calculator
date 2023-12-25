@@ -22,17 +22,39 @@ const number0 = document.querySelector("#number0"),
   number8 = document.querySelector("#number8"),
   number9 = document.querySelector("#number9");
 
+// operands
+
+sumOperand.addEventListener("click", () => {
+  bigScreen.innerHTML += " + ";
+  smallScreen.innerHTML = bigScreen.innerHTML;
+  bigScreen.innerHTML = '';
+});
+
+
+
 // all clear button
 
-acButton.addEventListener("click", () => {
+const allClear = () => {
   smallScreen.innerHTML = "";
   bigScreen.innerHTML = "";
-});
+};
+
+acButton.addEventListener("click", allClear);
 
 // delete button
 
 delButton.addEventListener("click", () => {
-  bigScreen.innerHTML = bigScreen.innerHTML.slice(0, -1);
+  if (bigScreen.innerHTML.length > 0) {
+    bigScreen.innerHTML = bigScreen.innerHTML.slice(0, -1);
+  } else {
+    allClear();
+  }
+});
+
+// equal buttons
+
+resultOperand.addEventListener("click", () => {
+  
 });
 
 // numbers event listeners
