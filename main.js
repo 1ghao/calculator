@@ -6,8 +6,8 @@ const delButton = document.querySelector("#delButton");
 
 const divideOperand = document.querySelector("#divideOperand");
 const multiplyOperand = document.querySelector("#multiplyOperand");
-const sumOperand = document.querySelector("#sumOperand");
 const substractOperand = document.querySelector("#substractOperand");
+const sumOperand = document.querySelector("#sumOperand")
 const resultOperand = document.querySelector("#result");
 const point = document.querySelector("#point");
 
@@ -24,13 +24,50 @@ const number0 = document.querySelector("#number0"),
 
 // operands
 
-sumOperand.addEventListener("click", () => {
-  bigScreen.innerHTML += " + ";
-  smallScreen.innerHTML = bigScreen.innerHTML;
-  bigScreen.innerHTML = '';
+function addOperand(operand) {
+  smallScreen.innerHTML = bigScreen.innerHTML += ` ${operand} `;
+  bigScreen.innerHTML = "";
+};
+
+divideOperand.addEventListener("click", () => {
+  if (smallScreen.innerHTML == '') {
+    addOperand('/');
+  } if (bigScreen.innerHTML == '') {
+  } else {
+    operate();
+    addOperand('/');
+  }
 });
 
+multiplyOperand.addEventListener("click", () => {
+  if (smallScreen.innerHTML == '') {
+    addOperand('*');
+  } if (bigScreen.innerHTML == '') {
+  } else {
+    operate();
+    addOperand('*');
+  }
+});
 
+substractOperand.addEventListener("click", () => {
+  if (smallScreen.innerHTML == '') {
+    addOperand('-');
+  } if (bigScreen.innerHTML == '') {
+  } else {
+    operate();
+    addOperand('-');
+  }
+});
+
+sumOperand.addEventListener("click", () => {
+  if (smallScreen.innerHTML == '') {
+    addOperand('+');
+  } if (bigScreen.innerHTML == '') {
+  } else {
+    operate();
+    addOperand('+');
+  }
+});
 
 // all clear button
 
@@ -51,10 +88,51 @@ delButton.addEventListener("click", () => {
   }
 });
 
-// equal buttons
+// equal button
+
+function getNumbers(arg) {
+  return parseFloat(arg.split(" "));
+}
+
+function operate() {
+  /* segregates thhe numbers from smallScreen and then returns the operation */
+  let operation = smallScreen.innerHTML.charAt(
+    smallScreen.innerHTML.length - 2
+  );
+  switch (operation) {
+    case "+":
+      let sumBefore = bigScreen.innerHTML;
+      bigScreen.innerHTML =
+        getNumbers(smallScreen.innerHTML) + parseFloat(bigScreen.innerHTML);
+      smallScreen.innerHTML += sumBefore;
+      break;
+    case "-":
+      let substractBefore = bigScreen.innerHTML;
+      bigScreen.innerHTML =
+        getNumbers(smallScreen.innerHTML) - parseFloat(bigScreen.innerHTML);
+      smallScreen.innerHTML += substractBefore;
+      break;
+    case "*":
+      let multiplyBefore = bigScreen.innerHTML;
+      bigScreen.innerHTML =
+        getNumbers(smallScreen.innerHTML) * parseFloat(bigScreen.innerHTML);
+      smallScreen.innerHTML += multiplyBefore;
+      break;
+    case "/":
+      let divideBefore = bigScreen.innerHTML;
+      bigScreen.innerHTML =
+        getNumbers(smallScreen.innerHTML) / parseFloat(bigScreen.innerHTML);
+      smallScreen.innerHTML += divideBefore;
+      break;
+  }
+}
 
 resultOperand.addEventListener("click", () => {
-  
+  if (bigScreen.innerHTML == '') {
+    bigScreen.innerHTML = getNumbers(smallScreen.innerHTML);
+  } else {
+    operate();
+  }
 });
 
 // numbers event listeners
